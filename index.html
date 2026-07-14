@@ -93,10 +93,12 @@
   .reef-inner{display:grid;grid-template-columns:0.9fr 1.1fr;gap:4rem;align-items:center;}
   .reef p{color:#2E4A5C;max-width:50ch;margin-bottom:1.1rem;}
   .reef .lede{font-size:1.15rem;color:var(--ink);font-weight:500;}
-  .reef-widget{position:relative;background:linear-gradient(180deg, #CFEFFB 0%, #F3FAFD 65%);border:1px solid var(--line);border-radius:4px;padding:2.2rem 1.8rem 1.4rem;overflow:hidden;}
-  .reef-svg-wrap{width:100%;aspect-ratio:480/300;}
-  .reef-svg-wrap svg{width:100%;height:100%;display:block;}
-  .reef-caption{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:#6f8a99;margin-top:1rem;flex-wrap:wrap;gap:.4rem .8rem;}
+  .reef-widget{position:relative;aspect-ratio:480/300;border-radius:4px;overflow:hidden;box-shadow:0 24px 60px -30px rgba(11,72,120,0.4);}
+  .reef-widget img{width:100%;height:100%;object-fit:cover;display:block;}
+  .reef-widget::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg, rgba(9,45,74,0.75) 0%, rgba(9,45,74,0.05) 45%, transparent 70%);}
+  .reef-widget-text{position:absolute;left:1.8rem;bottom:1.4rem;right:1.8rem;z-index:2;}
+  .reef-widget-text .title{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.03em;color:#fff;margin-bottom:.5rem;}
+  .reef-caption{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:rgba(255,255,255,0.8);flex-wrap:wrap;gap:.4rem .8rem;}
 
   /* ---------- 荣耀 / PRIDE ---------- */
   .pride{background:var(--coral);color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
@@ -228,46 +230,15 @@
         <p id="t-reef-p3">这些色彩绚烂的珊瑚礁，也是斐济渔业与旅游业共同依赖的生态基础——保护礁石健康，几乎等同于保护这个国家两大经济支柱的未来。</p>
       </div>
       <div class="reef-widget">
-        <div class="reef-svg-wrap">
-        <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid meet">
-          <defs>
-            <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#8FE0FA"/>
-              <stop offset="100%" stop-color="#1C93D8"/>
-            </linearGradient>
-          </defs>
-          <rect x="0" y="0" width="480" height="300" fill="url(#waterGrad)" opacity="0.35"/>
-          <g stroke-width="2" fill="none" opacity="0.9">
-            <path d="M40 260 Q50 210 40 170" stroke="#FF6F52"/>
-            <path d="M60 260 Q75 220 62 175" stroke="#FF9D52"/>
-            <path d="M90 260 Q100 200 85 160" stroke="#FFC24D"/>
-            <path d="M150 260 Q165 215 150 175" stroke="#FF6F52"/>
-            <path d="M180 260 Q192 210 178 165" stroke="#33B4EE"/>
-            <path d="M300 260 Q312 210 298 165" stroke="#FF9D52"/>
-            <path d="M330 260 Q345 215 330 175" stroke="#FF6F52"/>
-            <path d="M400 260 Q410 200 395 160" stroke="#FFC24D"/>
-            <path d="M430 260 Q445 220 432 175" stroke="#33B4EE"/>
-          </g>
-          <g fill="#0D2B3E" opacity="0.85">
-            <ellipse cx="120" cy="90" rx="9" ry="4">
-              <animateTransform attributeName="transform" type="translate" values="0 0; 40 -10; 90 4; 140 -8; 200 0" keyTimes="0;0.25;0.5;0.75;1" dur="9s" repeatCount="indefinite"/>
-            </ellipse>
-            <ellipse cx="260" cy="130" rx="7" ry="3.4" fill="#FF6F52">
-              <animateTransform attributeName="transform" type="translate" values="0 0; -30 12; -70 -6; -120 8; -180 0" keyTimes="0;0.25;0.5;0.75;1" dur="11s" repeatCount="indefinite"/>
-            </ellipse>
-            <ellipse cx="360" cy="70" rx="6" ry="3" fill="#33B4EE">
-              <animateTransform attributeName="transform" type="translate" values="0 0; 30 6; 60 -10; 90 4; 130 0" keyTimes="0;0.25;0.5;0.75;1" dur="7.5s" repeatCount="indefinite"/>
-            </ellipse>
-          </g>
-          <path d="M20 260 L460 260 L460 300 L20 300 Z" fill="#E9DFC7"/>
-          <text id="t-svg1" x="34" y="30" font-family="JetBrains Mono, monospace" font-size="11" fill="#2E4A5C">彩虹礁 · 布莱水道</text>
-          <text id="t-svg2" x="34" y="50" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--coral)">4,000+ 种海洋鱼类栖息于此</text>
-        </svg>
-        </div>
-        <div class="reef-caption">
-          <span id="t-rc1">全年可潜水</span>
-          <span id="t-rc2">软珊瑚四季常开</span>
-          <span id="t-rc3">洋流丰富 · 能见度高</span>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Colorfull%20fish%20at%20Fiji%20(31572739084).jpg" alt="斐济珊瑚礁鱼群">
+        <div class="reef-widget-text">
+          <div class="title mono" id="t-svg1">彩虹礁 · 布莱水道</div>
+          <div class="title mono" id="t-svg2" style="color:var(--coral);opacity:0.95;margin-bottom:.7rem;">4,000+ 种海洋鱼类栖息于此</div>
+          <div class="reef-caption">
+            <span id="t-rc1">全年可潜水</span>
+            <span id="t-rc2">软珊瑚四季常开</span>
+            <span id="t-rc3">洋流丰富 · 能见度高</span>
+          </div>
         </div>
       </div>
     </div>
