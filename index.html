@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>斐济 Fiji — 南太平洋的心脏</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link id="faviconLink" rel="icon" type="image/png" href="">
+<style>
+  :root{
+    --sky-deep:#0B72B9;
+    --sky-mid:#1C93D8;
+    --sky-bright:#33B4EE;
+    --coral:#FF6F52;
+    --sand:#FFF6E8;
+    --paper:#F3FAFD;
+    --ink:#0D2B3E;
+    --line: rgba(13,43,62,0.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.7;overflow-x:hidden;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.01em;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;}
+
+  /* ---------- LANG TOGGLE ---------- */
+  #langToggle{
+    position:fixed;top:1.4rem;right:1.4rem;z-index:1000;
+    display:flex;align-items:center;
+    background:rgba(11,114,185,0.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,0.4);border-radius:999px;padding:.3rem;
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.04em;
+    cursor:pointer;user-select:none;transition:border-color .3s ease;
+  }
+  #langToggle:hover{border-color:var(--coral);}
+  #langToggle span{padding:.4rem .85rem;border-radius:999px;color:rgba(255,255,255,0.75);transition:color .3s ease, background .3s ease;}
+  #langToggle span.on{background:var(--sky-bright);color:#fff;font-weight:500;}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;height:100vh;min-height:640px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:url('https://commons.wikimedia.org/wiki/Special:FilePath/2019-01-31%20Coral%20coast%2C%20Viti%20Levu%2C%20Fiji%2001.jpg') center/cover no-repeat;filter:saturate(1.1);}
+  .hero-scrim{position:absolute;inset:0;background:linear-gradient(180deg, rgba(11,72,120,0.2) 0%, rgba(11,72,120,0.35) 40%, rgba(9,45,74,0.92) 100%);}
+  .hero-content{position:relative;z-index:2;padding:0 6vw 8vh;max-width:980px;}
+  .hero-eyebrow{display:flex;align-items:center;gap:.6em;font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sky-bright);margin-bottom:1.4rem;}
+  .hero-eyebrow::before{content:"";width:28px;height:1px;background:var(--sky-bright);display:inline-block;}
+  .hero h1{font-size:clamp(2.6rem, 7vw, 5.6rem);line-height:1.02;margin-bottom:1.1rem;}
+  .hero h1 em{font-style:italic;color:var(--coral);font-weight:500;}
+  .hero p{font-size:clamp(1rem,1.6vw,1.2rem);max-width:580px;color:rgba(255,255,255,0.88);font-weight:400;}
+  .hero-scrollcue{position:absolute;bottom:2.4rem;left:6vw;z-index:2;display:flex;align-items:center;gap:.7em;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.1em;color:rgba(255,255,255,0.75);}
+  .hero-scrollcue .line{width:1px;height:34px;background:rgba(255,255,255,0.5);position:relative;overflow:hidden;}
+  .hero-scrollcue .line::after{content:"";position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--sky-bright);animation:drip 2.2s ease-in-out infinite;}
+  @keyframes drip{0%{top:-100%;}60%{top:100%;}100%{top:100%;}}
+
+  /* ---------- STAT BAR ---------- */
+  .statbar{background:var(--sky-deep);color:#fff;display:grid;grid-template-columns:repeat(4,1fr);}
+  .stat{padding:2.6rem 1.5rem;text-align:center;border-right:1px solid rgba(255,255,255,0.16);}
+  .stat:last-child{border-right:none;}
+  .stat .num{font-family:'Fraunces',serif;font-size:clamp(1.7rem,3vw,2.6rem);color:#fff;}
+  .stat .lbl{margin-top:.4rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:rgba(255,255,255,0.75);}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:7rem 6vw;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:3rem;border-bottom:1px solid var(--line);padding-bottom:1.6rem;}
+  .section-head .tag{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sky-deep);}
+  .section-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);}
+
+  /* ---------- 概况 / GEOGRAPHY ---------- */
+  .geo{background:var(--paper);}
+  .geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+  .geo-grid p{margin-bottom:1.2rem;max-width:52ch;color:#2E4A5C;}
+  .geo-grid .lede{font-size:1.15rem;color:var(--ink);font-weight:500;}
+  .map-frame{border-radius:2px;overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 60px -30px rgba(11,72,120,0.35);}
+  .map-frame iframe{width:100%;height:420px;display:block;border:0;}
+  .map-cap{margin-top:.8rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:#6f8a99;letter-spacing:.02em;}
+
+  /* ---------- GALLERY ---------- */
+  .gallery{background:var(--sky-deep);color:#fff;}
+  .gallery .section-head{border-bottom-color:rgba(255,255,255,0.2);}
+  .gallery .section-head .tag{color:var(--sky-bright);}
+  .gallery p.intro{max-width:60ch;color:rgba(255,255,255,0.82);margin-bottom:3rem;}
+  .gallery-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:260px 260px;gap:1rem;}
+  .gallery-grid figure{position:relative;overflow:hidden;border-radius:2px;margin:0;}
+  .gallery-grid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
+  .gallery-grid figure:hover img{transform:scale(1.06);}
+  .gallery-grid figure.tall{grid-row:span 2;}
+  .gallery-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:1rem 1.1rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.03em;background:linear-gradient(0deg, rgba(9,45,74,0.85), transparent);color:#fff;}
+
+  /* ---------- 珊瑚 / SIGNATURE VISUAL ---------- */
+  .reef{background:var(--paper);}
+  .reef-inner{display:grid;grid-template-columns:0.9fr 1.1fr;gap:4rem;align-items:center;}
+  .reef p{color:#2E4A5C;max-width:50ch;margin-bottom:1.1rem;}
+  .reef .lede{font-size:1.15rem;color:var(--ink);font-weight:500;}
+  .reef-widget{position:relative;background:linear-gradient(180deg, #CFEFFB 0%, #F3FAFD 65%);border:1px solid var(--line);border-radius:4px;padding:2.2rem 1.8rem 1.4rem;overflow:hidden;}
+  .reef-svg-wrap{width:100%;aspect-ratio:480/300;}
+  .reef-svg-wrap svg{width:100%;height:100%;display:block;}
+  .reef-caption{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:#6f8a99;margin-top:1rem;flex-wrap:wrap;gap:.4rem .8rem;}
+
+  /* ---------- 荣耀 / PRIDE ---------- */
+  .pride{background:var(--coral);color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+  .pride .section-head{border-bottom-color:rgba(255,255,255,0.3);}
+  .pride .section-head .tag{color:#fff;}
+  .pride p{color:rgba(255,255,255,0.92);max-width:52ch;margin-bottom:1.1rem;}
+  .pride ul{list-style:none;margin-top:1.6rem;}
+  .pride li{display:flex;gap:1rem;padding:1rem 0;border-top:1px solid rgba(255,255,255,0.3);font-size:.95rem;color:#fff;}
+  .pride li:last-child{border-bottom:1px solid rgba(255,255,255,0.3);}
+  .pride li .k{font-family:'JetBrains Mono',monospace;color:#FFE8A3;font-size:.8rem;min-width:6.5em;}
+  .pride-visual{aspect-ratio:4/5;background:url('https://commons.wikimedia.org/wiki/Special:FilePath/Suva%2C%20Fiji%2052.jpg') center/cover;border-radius:4px;position:relative;box-shadow:0 30px 70px -30px rgba(0,0,0,0.45);}
+  .pride-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg, rgba(11,114,185,0.3), rgba(9,45,74,0.15));mix-blend-mode:multiply;}
+
+  /* ---------- 视频 / FIELD FOOTAGE ---------- */
+  .field{background:var(--sand);}
+  .field .section-head{border-bottom-color:rgba(13,43,62,0.15);}
+  .field-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+  .field p{color:#5A4A2E;max-width:48ch;margin-bottom:1.1rem;}
+  .field .lede{font-size:1.1rem;color:var(--ink);font-weight:500;}
+  .video-frame{position:relative;border-radius:2px;overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 60px -30px rgba(11,72,120,0.35);aspect-ratio:16/9;}
+  .video-frame iframe{width:100%;height:100%;display:block;border:0;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--sky-deep);color:rgba(255,255,255,0.75);padding:3.5rem 6vw;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.03em;}
+  footer strong{color:#fff;font-family:'Fraunces',serif;font-size:1rem;font-weight:600;letter-spacing:0;}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (max-width:860px){
+    .statbar{grid-template-columns:repeat(2,1fr);}
+    .stat:nth-child(2){border-right:none;}
+    .geo-grid,.reef-inner,.pride,.field-inner{grid-template-columns:1fr;gap:2.4rem;}
+    .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px;}
+    .gallery-grid figure.tall{grid-row:span 1;grid-column:span 2;}
+    section{padding:4.5rem 6vw;}
+    .pride-visual{order:-1;aspect-ratio:16/9;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    .hero-scrollcue .line::after{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+  <div id="langToggle" onclick="setLang(currentLang==='zh'?'en':'zh')">
+    <span id="langZh" class="on">中</span><span id="langEn">EN</span>
+  </div>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-scrim"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow" id="t-eyebrow">南太平洋 · 美拉尼西亚 · 332座珊瑚礁岛屿</div>
+      <h1 id="t-h1">斐济<br><em>Fiji</em></h1>
+      <p id="t-hero-p">南太平洋的交通与文化枢纽，被称为"软珊瑚之都"。这里既有一句国民问候语"Bula"传遍世界的热带天堂形象，也有一枚改写国家命运的奥运金牌。</p>
+    </div>
+    <div class="hero-scrollcue"><div class="line"></div><span id="t-scroll">向下滚动</span></div>
+  </section>
+
+  <div class="statbar">
+    <div class="stat"><div class="num mono">18,300 km²</div><div class="lbl" id="t-stat1">国土总面积</div></div>
+    <div class="stat"><div class="num mono">~890,000</div><div class="lbl" id="t-stat2">全国人口</div></div>
+    <div class="stat"><div class="num mono">1,324 m</div><div class="lbl" id="t-stat3">全国最高峰</div></div>
+    <div class="stat"><div class="num mono">1970</div><div class="lbl" id="t-stat4">脱离英国独立</div></div>
+  </div>
+
+  <section class="geo reveal">
+    <div class="section-head">
+      <h2 id="t-geo-h2">332座岛屿的枢纽</h2>
+      <div class="tag" id="t-geo-tag">Geography · 地理</div>
+    </div>
+    <div class="geo-grid">
+      <div>
+        <p class="lede" id="t-geo-p1">斐济由332座岛屿组成，约三分之一有人居住。最大的两座岛屿维提岛与瓦努阿岛，容纳了全国约87%的人口，首都苏瓦就坐落在维提岛东南岸。</p>
+        <p id="t-geo-p2">维提岛地形多山，覆盖着茂密的热带雨林，全国最高峰托马尼维峰海拔1,324米。斐济地处美拉尼西亚与波利尼西亚群岛交界处，也是连接北美与澳新航线的海空交通要冲，被称为"南太平洋的十字路口"。</p>
+        <p id="t-geo-p3">国际日期变更线从斐济附近海域绕行而过，东部的塔韦乌尼岛甚至能让游客同时脚踏"今天"与"明天"两个日期——这也是斐济旅游宣传中"全球最早看见日出"说法的由来之一。</p>
+      </div>
+      <div>
+        <div class="map-frame">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4832398.820866104!2d176.82070637157346!3d-16.621727319692596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6e1990fd703cdc5d%3A0x9e9c319946ef5b93!2z5paQ5rWO!5e1!3m2!1szh-CN!2sus!4v1783930734446!5m2!1szh-CN!2sus" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="map-cap" id="t-map-cap">GOOGLE MAPS — 斐济在南太平洋的位置</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery reveal">
+    <div class="section-head">
+      <h2 id="t-gal-h2">珊瑚海岸与首都苏瓦</h2>
+      <div class="tag" id="t-gal-tag">Scenery · 风光</div>
+    </div>
+    <p class="intro" id="t-gal-intro">从维提岛蜿蜒的珊瑚海岸，到三面环水的首都苏瓦，斐济把热带岛国的悠闲，和一座区域中心城市的活力，装进了同一片海域。</p>
+    <div class="gallery-grid">
+      <figure class="tall">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/2019-01-31%20Coral%20coast%2C%20Viti%20Levu%2C%20Fiji%2001.jpg" alt="维提岛珊瑚海岸">
+        <figcaption id="t-cap1">珊瑚海岸 · 维提岛</figcaption>
+      </figure>
+      <figure>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/2019-01-28%20Viti%20Levu%27s%20Coral%20coast%2C%20Fiji.jpg" alt="维提岛海岸线">
+        <figcaption id="t-cap2">维提岛 · 海岸线</figcaption>
+      </figure>
+      <figure>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Suva%2C%20Fiji%2052.jpg" alt="苏瓦市景">
+        <figcaption id="t-cap3">苏瓦 · 首都市景</figcaption>
+      </figure>
+      <figure>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Colorfull%20fish%20at%20Fiji%20(31572739084).jpg" alt="斐济海底珊瑚鱼群">
+        <figcaption id="t-cap4">海底 · 珊瑚鱼群</figcaption>
+      </figure>
+      <figure>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Different%20fish%20swimming%20at%20the%20seabottom%20of%20Fiji%20(32265009432).jpg" alt="斐济潜水风光">
+        <figcaption id="t-cap5">潜水 · 海底风光</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="reef reveal">
+    <div class="section-head">
+      <h2 id="t-reef-h2">世界软珊瑚之都</h2>
+      <div class="tag" id="t-reef-tag">Soft Coral Capital · 软珊瑚之都</div>
+    </div>
+    <div class="reef-inner">
+      <div>
+        <p class="lede" id="t-reef-p1">斐济周边海域拥有超过4,000种海洋鱼类与丰富的软珊瑚群落，被潜水界称为"世界软珊瑚之都"。</p>
+        <p id="t-reef-p2">最负盛名的潜点"彩虹礁"位于布莱水道，湍急的洋流为软珊瑚带来源源不断的养分，让礁石常年呈现出饱和的紫、粉、橙色，是全球资深潜水员心中的朝圣地之一。</p>
+        <p id="t-reef-p3">这些色彩绚烂的珊瑚礁，也是斐济渔业与旅游业共同依赖的生态基础——保护礁石健康，几乎等同于保护这个国家两大经济支柱的未来。</p>
+      </div>
+      <div class="reef-widget">
+        <div class="reef-svg-wrap">
+        <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#8FE0FA"/>
+              <stop offset="100%" stop-color="#1C93D8"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="480" height="300" fill="url(#waterGrad)" opacity="0.35"/>
+          <g stroke-width="2" fill="none" opacity="0.9">
+            <path d="M40 260 Q50 210 40 170" stroke="#FF6F52"/>
+            <path d="M60 260 Q75 220 62 175" stroke="#FF9D52"/>
+            <path d="M90 260 Q100 200 85 160" stroke="#FFC24D"/>
+            <path d="M150 260 Q165 215 150 175" stroke="#FF6F52"/>
+            <path d="M180 260 Q192 210 178 165" stroke="#33B4EE"/>
+            <path d="M300 260 Q312 210 298 165" stroke="#FF9D52"/>
+            <path d="M330 260 Q345 215 330 175" stroke="#FF6F52"/>
+            <path d="M400 260 Q410 200 395 160" stroke="#FFC24D"/>
+            <path d="M430 260 Q445 220 432 175" stroke="#33B4EE"/>
+          </g>
+          <g fill="#0D2B3E" opacity="0.85">
+            <ellipse cx="120" cy="90" rx="9" ry="4">
+              <animateTransform attributeName="transform" type="translate" values="0 0; 40 -10; 90 4; 140 -8; 200 0" keyTimes="0;0.25;0.5;0.75;1" dur="9s" repeatCount="indefinite"/>
+            </ellipse>
+            <ellipse cx="260" cy="130" rx="7" ry="3.4" fill="#FF6F52">
+              <animateTransform attributeName="transform" type="translate" values="0 0; -30 12; -70 -6; -120 8; -180 0" keyTimes="0;0.25;0.5;0.75;1" dur="11s" repeatCount="indefinite"/>
+            </ellipse>
+            <ellipse cx="360" cy="70" rx="6" ry="3" fill="#33B4EE">
+              <animateTransform attributeName="transform" type="translate" values="0 0; 30 6; 60 -10; 90 4; 130 0" keyTimes="0;0.25;0.5;0.75;1" dur="7.5s" repeatCount="indefinite"/>
+            </ellipse>
+          </g>
+          <path d="M20 260 L460 260 L460 300 L20 300 Z" fill="#E9DFC7"/>
+          <text id="t-svg1" x="34" y="30" font-family="JetBrains Mono, monospace" font-size="11" fill="#2E4A5C">彩虹礁 · 布莱水道</text>
+          <text id="t-svg2" x="34" y="50" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--coral)">4,000+ 种海洋鱼类栖息于此</text>
+        </svg>
+        </div>
+        <div class="reef-caption">
+          <span id="t-rc1">全年可潜水</span>
+          <span id="t-rc2">软珊瑚四季常开</span>
+          <span id="t-rc3">洋流丰富 · 能见度高</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pride reveal">
+    <div>
+      <div class="section-head">
+        <h2 id="t-pr-h2">从甘蔗地到奥运金牌</h2>
+        <div class="tag" id="t-pr-tag">National Pride · 国家荣耀</div>
+      </div>
+      <p id="t-pr-p">19世纪末，大批印度劳工被英国殖民者招募到斐济种植甘蔗，与本地美拉尼西亚原住民一同，构成了今天斐济多元的人口结构。这段历史，也让斐济发展出独特的多族群社会与"卡瓦仪式"待客文化。</p>
+      <ul>
+        <li><span class="k mono" id="t-pr-k1">仪式</span><span id="t-pr-v1">卡瓦敬酒仪式是斐济最高规格的待客礼节，也是重要的社交传统</span></li>
+        <li><span class="k mono" id="t-pr-k2">族群</span><span id="t-pr-v2">原住民斐济人与印度裔斐济人，共同构成了当代斐济社会</span></li>
+        <li><span class="k mono" id="t-pr-k3">荣耀</span><span id="t-pr-v3">2016年里约奥运会，斐济男子七人制橄榄球队夺得该国历史上首枚奥运奖牌，且直接是金牌</span></li>
+        <li><span class="k mono" id="t-pr-k4">庆典</span><span id="t-pr-v4">夺冠当天，斐济政府宣布全国放假一天以示庆祝</span></li>
+      </ul>
+    </div>
+    <div class="pride-visual"></div>
+  </section>
+
+  <section class="field reveal">
+    <div class="section-head">
+      <h2 id="t-field-h2">旅行者眼中的斐济</h2>
+      <div class="tag" id="t-field-tag">Field Footage · 民间影像</div>
+    </div>
+    <div class="field-inner">
+      <div class="video-frame">
+        <iframe id="fieldVideoFrame" src="https://www.youtube.com/embed/TpVmeWELM9I" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div>
+        <p class="lede" id="t-field-p1">作为南太平洋旅游业最成熟的国家之一，斐济几乎是许多人心目中"热带天堂"的代名词。</p>
+        <p id="t-field-p2">独立旅行者的镜头记录下跳岛潜水、村落里的卡瓦仪式，以及那句挂在每个斐济人嘴边、意为"你好"的问候语"Bula"背后，最真实的日常生活。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div><strong id="t-foot-title">斐济 · Fiji</strong><br><span id="t-foot1">美拉尼西亚 · 南太平洋 · 独立于 1970 年</span></div>
+    <div id="t-foot2">地图：Google Maps ｜ 影像：Wikimedia Commons（CC BY / CC BY-SA）｜ 视频：YouTube<br>数据参考：维基百科、斐济政府公开资料</div>
+  </footer>
+
+<script>
+  const items = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:0.12});
+  items.forEach(el=>io.observe(el));
+
+  const translations = {
+    't-eyebrow': {zh:'南太平洋 · 美拉尼西亚 · 332座珊瑚礁岛屿', en:'South Pacific · Melanesia · 332 Coral Islands'},
+    't-h1': {zh:'斐济<br><em>Fiji</em>', en:'Fiji<br><em>Heart of the Pacific</em>'},
+    't-hero-p': {zh:'南太平洋的交通与文化枢纽，被称为"软珊瑚之都"。这里既有一句国民问候语"Bula"传遍世界的热带天堂形象，也有一枚改写国家命运的奥运金牌。', en:'The transport and cultural hub of the South Pacific, known as the "Soft Coral Capital of the World." Fiji carries both the tropical-paradise image spread worldwide by its greeting "Bula," and an Olympic gold medal that changed how the nation saw itself.'},
+    't-scroll': {zh:'向下滚动', en:'Scroll down'},
+    't-stat1': {zh:'国土总面积', en:'Total land area'},
+    't-stat2': {zh:'全国人口', en:'Population'},
+    't-stat3': {zh:'全国最高峰', en:'Highest peak'},
+    't-stat4': {zh:'脱离英国独立', en:'Independence'},
+    't-geo-h2': {zh:'332座岛屿的枢纽', en:'A Hub of 332 Islands'},
+    't-geo-tag': {zh:'Geography · 地理', en:'Geography'},
+    't-geo-p1': {zh:'斐济由332座岛屿组成，约三分之一有人居住。最大的两座岛屿维提岛与瓦努阿岛，容纳了全国约87%的人口，首都苏瓦就坐落在维提岛东南岸。', en:'Fiji is made up of 332 islands, about a third of them inhabited. The two largest, Viti Levu and Vanua Levu, are home to roughly 87% of the population; the capital, Suva, sits on the southeast coast of Viti Levu.'},
+    't-geo-p2': {zh:'维提岛地形多山，覆盖着茂密的热带雨林，全国最高峰托马尼维峰海拔1,324米。斐济地处美拉尼西亚与波利尼西亚群岛交界处，也是连接北美与澳新航线的海空交通要冲，被称为"南太平洋的十字路口"。', en:'Viti Levu is mountainous and covered in dense rainforest, home to the country\'s highest peak, Mount Tomanivi, at 1,324 meters. Sitting at the junction of Melanesia and Polynesia and astride the air and sea routes linking North America to Australia and New Zealand, Fiji is often called "the crossroads of the South Pacific."'},
+    't-geo-p3': {zh:'国际日期变更线从斐济附近海域绕行而过，东部的塔韦乌尼岛甚至能让游客同时脚踏"今天"与"明天"两个日期——这也是斐济旅游宣传中"全球最早看见日出"说法的由来之一。', en:'The International Date Line loops around Fiji\'s waters, and on Taveuni Island in the east, visitors can stand with one foot in "today" and the other in "tomorrow" — part of why Fiji\'s tourism board likes to claim it as one of the first places on Earth to see the sunrise.'},
+    't-map-cap': {zh:'GOOGLE MAPS — 斐济在南太平洋的位置', en:'GOOGLE MAPS — Fiji\'s location in the South Pacific'},
+    't-gal-h2': {zh:'珊瑚海岸与首都苏瓦', en:'The Coral Coast & Capital Suva'},
+    't-gal-tag': {zh:'Scenery · 风光', en:'Scenery'},
+    't-gal-intro': {zh:'从维提岛蜿蜒的珊瑚海岸，到三面环水的首都苏瓦，斐济把热带岛国的悠闲，和一座区域中心城市的活力，装进了同一片海域。', en:'From the winding Coral Coast of Viti Levu to the capital Suva, surrounded by water on three sides, Fiji packs both laid-back island ease and the energy of a regional hub into the same stretch of ocean.'},
+    't-cap1': {zh:'珊瑚海岸 · 维提岛', en:'Coral Coast · Viti Levu'},
+    't-cap2': {zh:'维提岛 · 海岸线', en:'Viti Levu · Coastline'},
+    't-cap3': {zh:'苏瓦 · 首都市景', en:'Suva · Capital cityscape'},
+    't-cap4': {zh:'海底 · 珊瑚鱼群', en:'Underwater · Reef fish'},
+    't-cap5': {zh:'潜水 · 海底风光', en:'Diving · Underwater scenery'},
+    't-reef-h2': {zh:'世界软珊瑚之都', en:'The Soft Coral Capital of the World'},
+    't-reef-tag': {zh:'Soft Coral Capital · 软珊瑚之都', en:'Soft Coral Capital'},
+    't-reef-p1': {zh:'斐济周边海域拥有超过4,000种海洋鱼类与丰富的软珊瑚群落，被潜水界称为"世界软珊瑚之都"。', en:'Fiji\'s waters are home to more than 4,000 species of marine fish and lush soft coral gardens, earning it the nickname "Soft Coral Capital of the World" among divers.'},
+    't-reef-p2': {zh:'最负盛名的潜点"彩虹礁"位于布莱水道，湍急的洋流为软珊瑚带来源源不断的养分，让礁石常年呈现出饱和的紫、粉、橙色，是全球资深潜水员心中的朝圣地之一。', en:'The famed Rainbow Reef sits in Bligh Water, where strong currents feed the soft corals a steady supply of nutrients, keeping the reef awash in saturated purples, pinks, and oranges year-round — a pilgrimage site for serious divers worldwide.'},
+    't-reef-p3': {zh:'这些色彩绚烂的珊瑚礁，也是斐济渔业与旅游业共同依赖的生态基础——保护礁石健康，几乎等同于保护这个国家两大经济支柱的未来。', en:'These vivid reefs are also the ecological foundation both fishing and tourism depend on — protecting reef health is, in effect, protecting the future of two of the country\'s core industries.'},
+    't-svg1': {zh:'彩虹礁 · 布莱水道', en:'Rainbow Reef · Bligh Water'},
+    't-svg2': {zh:'4,000+ 种海洋鱼类栖息于此', en:'Home to 4,000+ marine fish species'},
+    't-rc1': {zh:'全年可潜水', en:'Diveable year-round'},
+    't-rc2': {zh:'软珊瑚四季常开', en:'Soft corals bloom year-round'},
+    't-rc3': {zh:'洋流丰富 · 能见度高', en:'Strong currents · High visibility'},
+    't-pr-h2': {zh:'从甘蔗地到奥运金牌', en:'From Sugarcane Fields to Olympic Gold'},
+    't-pr-tag': {zh:'National Pride · 国家荣耀', en:'National Pride'},
+    't-pr-p': {zh:'19世纪末，大批印度劳工被英国殖民者招募到斐济种植甘蔗，与本地美拉尼西亚原住民一同，构成了今天斐济多元的人口结构。这段历史，也让斐济发展出独特的多族群社会与"卡瓦仪式"待客文化。', en:'In the late 19th century, large numbers of indentured Indian laborers were brought to Fiji by British colonial authorities to work the sugarcane fields, joining the indigenous Melanesian population to shape Fiji\'s multi-ethnic society today — a history that also gave rise to Fiji\'s distinctive kava ceremony culture of hospitality.'},
+    't-pr-k1': {zh:'仪式', en:'Ceremony'},
+    't-pr-v1': {zh:'卡瓦敬酒仪式是斐济最高规格的待客礼节，也是重要的社交传统', en:'The kava ceremony is Fiji\'s highest form of hospitality and an important social tradition'},
+    't-pr-k2': {zh:'族群', en:'Communities'},
+    't-pr-v2': {zh:'原住民斐济人与印度裔斐济人，共同构成了当代斐济社会', en:'Indigenous iTaukei Fijians and Indo-Fijians together make up contemporary Fijian society'},
+    't-pr-k3': {zh:'荣耀', en:'Glory'},
+    't-pr-v3': {zh:'2016年里约奥运会，斐济男子七人制橄榄球队夺得该国历史上首枚奥运奖牌，且直接是金牌', en:'At the 2016 Rio Olympics, Fiji\'s men\'s rugby sevens team won the country\'s first-ever Olympic medal — and it was gold'},
+    't-pr-k4': {zh:'庆典', en:'Celebration'},
+    't-pr-v4': {zh:'夺冠当天，斐济政府宣布全国放假一天以示庆祝', en:'The government declared a national public holiday on the day of the win'},
+    't-field-h2': {zh:'旅行者眼中的斐济', en:'Fiji, Through a Traveler\'s Eyes'},
+    't-field-tag': {zh:'Field Footage · 民间影像', en:'Field Footage'},
+    't-field-p1': {zh:'作为南太平洋旅游业最成熟的国家之一，斐济几乎是许多人心目中"热带天堂"的代名词。', en:'As one of the most tourism-developed countries in the South Pacific, Fiji is, for many, practically synonymous with "tropical paradise."'},
+    't-field-p2': {zh:'独立旅行者的镜头记录下跳岛潜水、村落里的卡瓦仪式，以及那句挂在每个斐济人嘴边、意为"你好"的问候语"Bula"背后，最真实的日常生活。', en:'Independent travelers\' footage captures island-hopping dives, village kava ceremonies, and the everyday life behind "Bula" — the greeting that seems to be on every Fijian\'s lips.'},
+    't-foot1': {zh:'美拉尼西亚 · 南太平洋 · 独立于 1970 年', en:'Melanesia · South Pacific · Independent since 1970'},
+    't-foot-title': {zh:'斐济 · Fiji', en:'Fiji'},
+    't-foot2': {zh:'地图：Google Maps ｜ 影像：Wikimedia Commons（CC BY / CC BY-SA）｜ 视频：YouTube<br>数据参考：维基百科、斐济政府公开资料', en:'Map: Google Maps ｜ Imagery: Wikimedia Commons (CC BY / CC BY-SA) ｜ Video: YouTube<br>Data: Wikipedia, Government of Fiji public sources'}
+  };
+
+  const pageMeta = {
+    zh:{title:'斐济 Fiji — 南太平洋的心脏', lang:'zh-CN', favicon:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAU5SURBVGhD7Zh7aJNXGIefeEvaWFt7SW3XNi3V6LStomIV5xhW3A0mwtRV2Ea3obiN3WAMp2AdDlHnxi7MDXdhcw6noOhAQbyMbV5W3aWt1jZWeo82NW3SJE0Tq90fCWly2nzpaQpRyMP31+973/A9OefknC8qDth5kBkjBg8aMYFoExOINjGBaBMTiDYxgWgTE4g2MYFooxrl94Eju2iqRl/IyneHlUfMaI9A7XkuHqH2/HDziJEUcDkwGZUul+J4uuxivdjuEFvCITmFmq/ww3tiGEhjFU4rs5ex8UhQvn0llafQJpFbFJQLvLiDnAIxVERSoPYC5cvFcDChBMJSfpIZi8RQEUkBu4Wrv4thIN7FGkog7CKe9SgJKWKoiKRAWLwPGkpgcB4x8gImI6brYujn0IdhRmDVpqA8kIQUpi8Uw3DIC5z9kRN7xNCPuYFeZ0gBjRZdXlAeiGEBr3wqhuGQ/BkFUKEKffX3i+WB9PeL9UHXCB5mBCNgaaWjWQz97NvIjX9CjkD+XJ7fHpQHok0ie6YYhkNeQJlQizVUHjGSAnUXsVvEMJBIFrGX+U+LiSKSAt+8ibFCDAOJZBF72XlBTBSRFDj6Ma3XxDCQqjPYzD4Bm5nmKxQuxS+QqKNoqdgi8NpeMVFEUsDSitslhoF8/Sp1F5m9jNJyDnxAdwfrPid3tk9g+kLWfym2CGROExNFJAXC4h2irIcpXsFbcwAeX0/ZRwP5infElsgYbQHvEKnjSNSxczVVp0lKZ9sZVGN8eUqW2BIZkgLnDmFuFMNQXDtH1WmAJaXDnRi6XBavEkNFJAU+K6PmDzEMxR03TiuARotmonh3SGYu4Y3vxVARSYFv38b4V1BibcdmBlDHMyU/6FYoFFoMxbz8SVASDkmBlhrfl+qn6xZfbcDdw7gJlO3mIUPQ3cF0NPPTJp/A2q0Ygo+f8qcJSYHB9Hk4/gU/bwGY+wQv7SY1R6zx43KwfzO/7aPPQ0kZz22RfX0ZzFiefV/MpBgzlkwDd+9w/RIdzTRdJT2P1KF+amxmDu/kz19wOykqYe1WkjPFGnkiFvBO5awZeE9K5gbaalHHk6Zn/ISBGpOR/ZupOIbTSlEJpeW+logZDQEgfpLvgZqvYm6irRaTkYx8ElJwOag4yuEdVJ/F7WTBM6zaRN4c8RNGSsRrIBBLK5d+5cQe2hvQaMmfR8FjtNbSWElbHep4ntzA4tWyy1SZURUAnDYa/uXkXiqOASSl4+iiz4M6ntJyilcyeYrYEhmjNIW8uBy01NBYSeUp32tDr5N7dwFUKu546PNw7x7jJ6DRir0jZTRGwPs/RUsN9Zfp7qDzJpZWgPQ85j3F7RYqT+HuAUjJIjkD7WTS89AXkpZNShaTM4kb3j49FPICJiOA6Trdt7l1A3Mjdgv2Tro7sLb7aopKmLEIQzEZU+npprGKhv+ovzywi2u0JOrQJhGXgGYi49XoCwGyZ5I5jcxwu2EAMgImIwe3+eaGvRO3E0dX0MZsKGbqfHIK0BeQmj2wSfV5sJnpvElbHc1XqL9MU7VvTPwkpQPo9Lz+HTp90C1FZATsFnatEc9C+kJyZpExlUyDb4Yk6hgXsAME4jexmblVT+dNbrfQ3kBTta9g+Tpe2B6yfShkBIC/j3NwGzmzSEghOYPUHJLSmZRGQrL0ocBpo9dOTzdOK9Z2bB04u3hkDbpcsVIRSQG3k4ZKJqWhjkOTgDZRLBgxbieeXulvQVrg/mMk/+bdV8QEok1MINrEBKJNTCDaxASizQMv8D8cCCmVBoVFEQAAAABJRU5ErkJggg=='},
+    en:{title:'Fiji — Heart of the Pacific', lang:'en', favicon:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADySURBVEhL7ZStDsIwFEa/ux+JmUAT1BQe5HgBSBAkMyheAIVAEyRvgUIh4SHgQTCTo4BgiLbQ22ZDkPSkYvmae0/a3Y2wK/BLAjVoGi9g8QKWGoJVhnkXxVXNZYyCPPmwDttqVwiIUqnQIdOXPG2h3UE2k8K0j3QAAOIGPBDG0q4GJ+gNsdzLKYFITkwYrwgAESiQl0N3C4GBzQR5ooYaNQR3q5dcQ2AHJ7ic1DF1hJsifUxHi+phPcb5aCoHLAT6mNL70HYC7or0MXXEucAVL2AxTpEoAUIYqfkLu7+p8QRh/LU7gDBiu3OCJvAClv8XPAEclDZmg+6r/gAAAABJRU5ErkJggg=='}
+  };
+
+  const fieldVideo = {
+    zh: 'https://www.youtube.com/embed/TpVmeWELM9I',
+    en: 'https://www.youtube.com/embed/YvQ1e1yih9M'
+  };
+
+  let currentLang = 'zh';
+
+  function setFavicon(href){
+    const old = document.getElementById('faviconLink');
+    if(old) old.remove();
+    const link = document.createElement('link');
+    link.id = 'faviconLink';
+    link.rel = 'icon';
+    link.type = 'image/png';
+    link.href = href;
+    document.head.appendChild(link);
+  }
+  setFavicon(pageMeta.zh.favicon);
+
+  function setLang(lang){
+    currentLang = lang;
+    document.documentElement.lang = pageMeta[lang].lang;
+    document.title = pageMeta[lang].title;
+    setFavicon(pageMeta[lang].favicon);
+    document.getElementById('langZh').classList.toggle('on', lang==='zh');
+    document.getElementById('langEn').classList.toggle('on', lang==='en');
+    const fv = document.getElementById('fieldVideoFrame');
+    if(fv && fv.src !== fieldVideo[lang]) fv.src = fieldVideo[lang];
+    Object.keys(translations).forEach(id=>{
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.innerHTML = translations[id][lang];
+    });
+  }
+</script>
+
+</body>
+</html>
